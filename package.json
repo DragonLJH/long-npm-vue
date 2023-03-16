@@ -25,10 +25,10 @@
         "vue": "^3.2.45"
     },
     "devDependencies": {
-        "awesome-typescript-loader": "^5.2.1",
         "css-loader": "^6.7.3",
         "html-webpack-plugin": "^5.2.0",
         "style-loader": "^3.3.2",
+        "ts-loader": "^9.4.2",
         "typescript": "^3.9.10",
         "url-loader": "^4.1.1",
         "vue-loader": "^17.0.1",

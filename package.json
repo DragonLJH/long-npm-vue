@@ -8,7 +8,8 @@
         "watch": "webpack --watch",
         "start": "webpack serve --env NODE_ENV=development",
         "build:dev": "webpack --env NODE_ENV=development",
-        "build:pro": "webpack --env NODE_ENV=production"
+        "build:pro": "webpack --env NODE_ENV=production",
+        "build:com": "webpack --env NODE_ENV=production com=true"
     },
     "repository": {
         "type": "git",
@@ -25,6 +26,7 @@
         "vue": "^3.2.45"
     },
     "devDependencies": {
+        "@types/webpack-env": "^1.18.0",
         "css-loader": "^6.7.3",
         "html-webpack-plugin": "^5.2.0",
         "style-loader": "^3.3.2",

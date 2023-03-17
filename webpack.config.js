@@ -5,10 +5,14 @@ const { VueLoaderPlugin } = require('vue-loader');
 const { DefinePlugin } = require("webpack")
 
 module.exports = (env) => {
+    const mode = env.NODE_ENV
+    const entryIndex = env.com ? "./src/components/index.ts" : "./src/index.ts"
+    const outputIndex = env.com ? "[name].js" : "js/[name].[contenthash:8].js"
+    console.log("entryIndex", entryIndex)
     return {
-        mode: env.NODE_ENV,
+        mode: mode,
         entry: {
-            index: "./src/index.ts",
+            index: entryIndex,
         },
         resolve: {
             extensions: ['.vue', '.ts', '.js'],
@@ -19,31 +23,25 @@ module.exports = (env) => {
         devtool: 'inline-source-map',
         module: {
             rules: [{
-                test: /\.vue$/i,
-                use: "vue-loader"
-            },
-            {
-                test: /\.css$/i,
-                use: ["style-loader", "css-loader"]
-            },
-            {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                use: "url-loader"
-                // type: "asset/resource"
-            },
-            {
-                test: /\.([cm]?ts|tsx)$/,
-                loader: "ts-loader",
-                options: {
-                    transpileOnly: true
-                }
-                // options: {
-                //     reportFiles: [
-                //         'src/**/*.{ts,tsx}'
-                //     ]
-                // },
-                // exclude: /node_modules/
-            },
+                    test: /\.vue$/i,
+                    use: "vue-loader"
+                },
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"]
+                },
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                    use: "url-loader"
+                        // type: "asset/resource"
+                },
+                {
+                    test: /\.([cm]?ts|tsx)$/,
+                    loader: "ts-loader",
+                    options: {
+                        transpileOnly: true
+                    }
+                },
             ]
         },
         plugins: [
@@ -58,9 +56,12 @@ module.exports = (env) => {
             }),
         ],
         output: {
-            filename: "js/[name].[contenthash:8].js",
+            filename: outputIndex,
             path: path.resolve(__dirname, "dist"),
             clean: true,
+            libraryTarget: 'umd', // 采用通用模块定义
+            libraryExport: 'default', // 兼容 ES6 的模块系统、CommonJS 和 AMD 模块规范
+
         },
         devServer: {
             host: "localhost", // 启动服务器域名

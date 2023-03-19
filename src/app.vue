@@ -1,5 +1,4 @@
 <template>
-    <MyCard />
     <div>
         <span v-for="(item, index) in routesPath" :key="index">
             <router-link :to="item.path">{{ item.title }}</router-link>

@@ -15,4 +15,9 @@ export const MyHelloWord = {
 }
 
 
+const install = (app: App) => {
+    app.component("MyCard", LCard);
+    app.component("MyHelloWord", HelloWord);
+}
 
+export default install

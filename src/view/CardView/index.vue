@@ -1,7 +1,7 @@
 <template>
   <div class="card-view">
     <div>card-view</div>
-    <LCard />
+    <LCard>123</LCard>
   </div>
 </template>
 <script lang="ts" setup>

@@ -9,7 +9,25 @@
 </template>
 
 <script setup lang="ts">
-const style = { "--width": "400px", "--height": "300px" };
+import { withDefaults, defineProps, onMounted, reactive } from 'vue';
+const style = reactive({ "--width": "", "--height": "" });
+type buttonProps = {
+  widthAuto?: boolean,
+  width: number,
+  height: number,
+  type?: "default" | "danger"
+}
+
+const props = withDefaults(defineProps<buttonProps>(), {
+  type: "default",
+  width: 400,
+  height: 300
+})
+onMounted(() => {
+  style["--width"] = props.width + "px"
+  style["--height"] = props.height + "px"
+
+})
 </script>
 
 <style scoped>

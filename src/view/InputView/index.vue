@@ -1,26 +1,36 @@
 <template>
   <div class="input-view">
-    <MyInput v-model="value" left-icon="iphone" clear />
-    <MyInput v-model="valueP" type="password" left-icon="preview-close" />
-    <button @click="asd">check</button>
+    <MyCard>
+      <MyInput v-model="value" left-icon="iphone" clear label="手机号" />
+      <MyInput v-model="valueP" type="password" clear left-icon="preview-close" label="密码"/>
+      <MyButton>登录</MyButton>
+      <MyButton type="danger">重置</MyButton>
+    </MyCard>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { getMergeUrl } from '@/utils/fetchUtils';
 
 const name = "input-view";
 const value = ref("")
 const valueP = ref("")
-const asd = () => {
-  const url = "http://localhost:8081/user/queryUserByPhone" + "?" + "userPhone=" + value.value
-  fetch(url, {
+const asd = async () => {
+  let data = {
+    userPhone: value.value
+  }
+  const url = getMergeUrl("http://localhost:8081/user/queryUserByPhone", data)
+  console.log(url)
+  let response = await fetch(url, {
     mode: "cors",
     credentials: "include"
-  }).then(data => {
-    console.log(data)
-  }).catch(e => {
-    console.error(e)
+  });
+  for (let [key, value] of response.headers) {
+    console.log(`${key} : ${value}`);
+  }
+  response.json().then(res => {
+    console.log(res)
   })
-}
 
+}
 </script>

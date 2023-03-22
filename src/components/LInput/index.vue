@@ -1,5 +1,8 @@
 <template>
     <div :class="`l-input ${active ? 'active' : ''}`" @click="inputClick">
+        <div class="l-input-label" v-if="props.label" :title="props.label">
+            {{ props.label }}
+        </div>
         <div ref="refInputIcon" class="l-input-icon">
             <MyIcon :className="props.leftIcon" />
         </div>
@@ -15,6 +18,7 @@
 <script setup lang="ts">
 import { ref, withDefaults, defineProps, defineEmits } from "vue";
 type lInputProps = {
+    label: string
     modelValue: string
     leftIcon: string
     type: "text" | "password"
@@ -33,6 +37,7 @@ const inputBlur = () => {
 }
 
 const props = withDefaults(defineProps<lInputProps>(), {
+    label: "",
     modelValue: "modelValue",
     leftIcon: "",
     type: "text"
@@ -64,6 +69,8 @@ input:focus-visible {
     height: 30px;
     align-items: center;
     box-shadow: 0px 0px 3px #ccc;
+    background-color: #fff;
+    margin: 5px 10px;
 }
 
 .l-input:hover,
@@ -72,6 +79,12 @@ input:focus-visible {
 }
 
 
+.l-input-label {
+    width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
 .l-input-icon {
     width: 30px;

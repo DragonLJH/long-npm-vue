@@ -1,9 +1,7 @@
 <template>
-  <div class="l-card">
-    <div class="l-card-various" :style="style">
-      <div class="l-card-various-item">
-        <slot></slot>
-      </div>
+  <div class="l-card" :shadow="props.shadow" :type="props.type" :style="style">
+    <div class="l-card-main">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -11,14 +9,14 @@
 <script setup lang="ts">
 import { withDefaults, defineProps, onMounted, reactive } from 'vue';
 const style = reactive({ "--width": "", "--height": "" });
-type buttonProps = {
-  widthAuto?: boolean,
+type cardProps = {
   width: number,
   height: number,
-  type?: "default" | "danger"
+  type?: "default" | "various"
+  shadow?: "always" | "hover"
 }
 
-const props = withDefaults(defineProps<buttonProps>(), {
+const props = withDefaults(defineProps<cardProps>(), {
   type: "default",
   width: 400,
   height: 300
@@ -31,16 +29,27 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.l-card-various {
+.l-card {
   width: var(--width);
   height: var(--height);
   border: solid 1px #ccc;
   position: relative;
-  background-color: #eee;
+  background-color: #fff;
   overflow: hidden;
 }
 
-.l-card-various::after {
+.l-card[shadow=always] {
+  box-shadow: 5px 5px 5px #000,
+    inset 0px 0px 1px;
+}
+
+.l-card[shadow=hover]:hover {
+  box-shadow: 5px 5px 5px #000,
+    inset 0px 0px 1px;
+
+}
+
+.l-card[type=various]::after {
   content: "";
   position: absolute;
   left: 0;
@@ -54,7 +63,7 @@ onMounted(() => {
   animation: rotateRed 5s infinite linear;
 }
 
-.l-card-various::before {
+.l-card[type=various]::before {
   content: "";
   position: absolute;
   left: 0;
@@ -88,7 +97,7 @@ onMounted(() => {
   }
 }
 
-.l-card-various-item {
+.l-card-main {
   position: absolute;
   width: calc(100% - 10px);
   height: calc(100% - 10px);
@@ -98,7 +107,7 @@ onMounted(() => {
   bottom: 0;
   left: 0;
   margin: auto;
-  background-color: #ccc;
+  background-color: #fff;
   z-index: 2;
 }
 </style>

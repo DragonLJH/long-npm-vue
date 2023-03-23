@@ -4,6 +4,7 @@ import HelloWord from './HelloWord/index.vue';
 import LInput from './LInput/index.vue';
 import LIcon from './LIcon/index.vue';
 import LButton from './LButton/index.vue';
+import LTabs from './LTabs/index.vue';
 import type { App } from 'vue';
 const install = function (app: App) {
     app.component("MyInput", LInput);
@@ -11,6 +12,7 @@ const install = function (app: App) {
     app.component("MyHelloWord", HelloWord);
     app.component("MyIcon", LIcon);
     app.component("MyButton", LButton);
+    app.component("MyTabs", LTabs);
 }
 
 

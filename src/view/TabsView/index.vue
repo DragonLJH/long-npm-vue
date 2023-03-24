@@ -10,8 +10,8 @@
 <script lang="ts" setup>
 import { ref, onMounted, reactive } from "vue";
 const tabList = {
-  active: 1,
-  tabsType: "card",
+  active: "path2",
+  tabsType: "flex",
   tabsData: [
     {
       to: "path1",
@@ -31,5 +31,5 @@ const tabList = {
   ],
 };
 
-onMounted(() => {});
+onMounted(() => { });
 </script>

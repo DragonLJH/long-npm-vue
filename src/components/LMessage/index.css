@@ -1,0 +1,56 @@
+.message-com {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.message-com .message-com-item {
+    width: 300px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    box-shadow: rgb(0, 0, 0) 5px 5px 10px 1px, rgb(132, 132, 132) -1px -1px 10px 1px inset;
+    overflow: hidden;
+}
+
+.message-com .head {
+    width: calc(100% - 20px);
+    margin: 0px 0px 5px;
+    padding: 0px 10px;
+    box-shadow: rgb(204, 204, 204) 0px 0px 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.message-com .msg {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.message-com .footer {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.message-com .close {
+    cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    padding: 5px 10px;
+    border: solid 1px #ccc;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 1px #000, inset -1px -1px 1px 1px #eee, -1px -1px 1px 1px #999;
+}
+
+.message-com .close:hover {
+    background-color: #efefef;
+}

@@ -3,13 +3,13 @@
         <div class="l-message-main">
             <div class="l-message-main-title">
                 <div class="left">{{ props.title }}</div>
-                <div class="right" @click="emits('close', false)">X </div>
+                <div class="right cursor" @click="emits('close', false)">X </div>
             </div>
             <div class="l-message-main-msg">
                 {{ props.msg }}
             </div>
             <div class="l-message-main-footer">
-                <div @click="emits('close', false)">
+                <div class="cursor" @click="emits('close', false)">
                     关闭
                 </div>
             </div>
@@ -42,6 +42,10 @@ onMounted(() => {
     display: block;
 }
 
+.l-message .cursor {
+    cursor: pointer;
+}
+
 .l-message {
     display: none;
     position: fixed;
@@ -60,6 +64,10 @@ onMounted(() => {
     bottom: 0;
     left: 0;
     margin: auto;
+    box-shadow: 5px 5px 5px #000, inset -1px -1px 10px -5px #000;
+
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .l-message-main-title {
@@ -88,7 +96,6 @@ onMounted(() => {
     border: solid 1px #ccc;
     padding: 2px 3px;
     margin: 0px 5px;
-    cursor: pointer;
     box-shadow: 2px 2px 2px #ccc;
 }
 

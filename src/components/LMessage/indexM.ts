@@ -1,4 +1,5 @@
 import { createApp, h } from 'vue'
+import "./index.css"
 const Message = {
     props: {
         title: { type: String },
@@ -6,8 +7,14 @@ const Message = {
     },
     render(option: any) {
         const { $props, $emit } = option
-        console.log("render-option", $emit)
-        return h('div', { class: "message", onClick: () => { $emit("close") } }, $props.title)
+        return h("div", { class: "message-com-item" },
+            [
+                h("div", { class: "head" }, $props.title),
+                h("div", { class: "msg" }, $props.msg),
+                h("div", { class: "footer" }, [
+                    h("div", { class: "close", onClick: () => $emit("close") }, "close")
+                ]),
+            ])
     },
 }
 
@@ -16,15 +23,20 @@ type msgProps = {
     msg: string
 }
 
-export function showMsg(option: msgProps, fun?: Function) {
+export function showMsg(option: msgProps, onClick: Function) {
     const { title, msg } = option
     let div = document.createElement("div")
-    div.setAttribute("class", "message-div")
-    createApp(Message, {
-        title, msg, onClose: () => {
-            console.log("onClose-asd")
-        }
-    }).mount(div)
+    div.setAttribute("class", "message-com")
     document.body.append(div)
+    let app = createApp(Message, {
+        title, msg, onClose: () => {
+            // 将关闭弹窗的方法 返回
+            onClick(() => {
+                app.unmount()
+                div.remove()
+            })
+        }
+    })
+    app.mount(div)
 }
 

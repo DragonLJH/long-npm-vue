@@ -16,7 +16,9 @@ const obj = reactive({
 const openMsg = () => {
   obj.show = true
   console.log(obj)
-  showMsg({ title:"asd-title", msg:"asd-msg" })
+  showMsg({ title: "asd-title", msg: "asd-msg" }, (close: Function) => {
+    close()
+  })
 }
 
 const closeMsg = (closeData: boolean) => {

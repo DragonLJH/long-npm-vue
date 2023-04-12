@@ -8,8 +8,10 @@ import LTabs from './LTabs/index.vue';
 import LMessage from './LMessage/index.vue';
 import LDrag from './LDrag/index.vue';
 import { showMsg } from './LMessage/indexM';
+import { svgStyle, initSvg } from './LIcon/indexS';
 import type { App } from 'vue';
 const install = function (app: App) {
+    initSvg()
     app.component("MyInput", LInput);
     app.component("MyCard", LCard);
     app.component("MyHelloWord", HelloWord);

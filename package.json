@@ -9,7 +9,6 @@
         "start": "webpack-dev-server --config config/webpack.dev.config.js",
         "build": "webpack --config config/webpack.prod.config.js",
         "pub": "npm run build && npm publish"
-
     },
     "repository": {
         "type": "git",
@@ -28,6 +27,7 @@
     "devDependencies": {
         "@types/webpack-env": "^1.18.0",
         "css-loader": "^6.7.3",
+        "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.2.0",
         "mini-css-extract-plugin": "^2.7.5",
         "style-loader": "^3.3.2",

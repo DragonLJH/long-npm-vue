@@ -13,25 +13,25 @@ module.exports = {
     devtool: 'inline-source-map',
     module: {
         rules: [{
-            test: /\.vue$/i,
-            use: "vue-loader"
-        },
-        {
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"]
-        },
-        {
-            test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            use: "url-loader"
-            // type: "asset/resource"
-        },
-        {
-            test: /\.([cm]?ts|tsx)$/,
-            loader: "ts-loader",
-            options: {
-                transpileOnly: true
-            }
-        },
+                test: /\.vue$/i,
+                use: "vue-loader"
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                use: "file-loader"
+                    // type: "asset/resource"
+            },
+            {
+                test: /\.([cm]?ts|tsx)$/,
+                loader: "ts-loader",
+                options: {
+                    transpileOnly: true
+                }
+            },
         ]
     },
     plugins: [

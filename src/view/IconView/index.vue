@@ -2,6 +2,7 @@
   <div class="icon-view">
     <div v-for="(item, index) in list" :key="index">
       <MyIcon :className="item" />
+      <div class="icon" :class="item"></div>
     </div>
 
   </div>

@@ -8,7 +8,7 @@ import LTabs from './LTabs/index.vue';
 import LMessage from './LMessage/index.vue';
 import LDrag from './LDrag/index.vue';
 import { showMsg } from './LMessage/indexM';
-import { svgStyle, initSvg } from './LIcon/indexS';
+import { svgStyle, initSvg, arr } from './LIcon/indexS';
 import type { App } from 'vue';
 const install = function (app: App) {
     initSvg()
@@ -21,6 +21,7 @@ const install = function (app: App) {
     app.component("MyMessage", LMessage);
     app.component("MyDrag", LDrag);
     app.config.globalProperties.$showMsg = showMsg
+    app.provide("iconArr", arr)
 }
 
 

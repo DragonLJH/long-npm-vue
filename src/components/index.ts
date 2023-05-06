@@ -7,6 +7,8 @@ import LButton from './LButton/index.vue';
 import LTabs from './LTabs/index.vue';
 import LMessage from './LMessage/index.vue';
 import LDrag from './LDrag/index.vue';
+import LGrid from './LGrid/index.vue';
+import LGridItem from './LGrid/item.vue';
 import { showMsg } from './LMessage/indexM';
 import { svgStyle, initSvg, arr } from './LIcon/indexS';
 import type { App } from 'vue';
@@ -20,6 +22,8 @@ const install = function (app: App) {
     app.component("MyTabs", LTabs);
     app.component("MyMessage", LMessage);
     app.component("MyDrag", LDrag);
+    app.component("MyGrid", LGrid);
+    app.component("MyGridItem", LGridItem);
     app.config.globalProperties.$showMsg = showMsg
     app.provide("iconArr", arr)
 }

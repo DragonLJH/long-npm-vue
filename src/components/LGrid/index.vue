@@ -19,11 +19,7 @@ const props = withDefaults(defineProps<{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    gap: var(--space);
 
-}
-
-.l-grid /deep/ .item {
-    display: inline-block;
-    margin: var(--space); 
 }
 </style>

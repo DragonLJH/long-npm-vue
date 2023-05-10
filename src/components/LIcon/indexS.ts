@@ -78,8 +78,8 @@ export const initSvg = () => {
             html = '<style xmlns="http://www.w3.org/2000/svg" type="text/css">svg{--color:%23f00;} </style>' + html
             svgXml.documentElement.innerHTML = html
             let svgStr = (new XMLSerializer()).serializeToString(svgXml);
-            console.log("svgXml", svgXml.documentElement.innerHTML)
-            console.log("svgStr", svgStr)
+            // console.log("svgXml", svgXml.documentElement.innerHTML)
+            // console.log("svgStr", svgStr)
             let style = `.icon.${item.name}{  
                 background-image: url('data:image/svg+xml;utf-8,${svg}');
             }`
